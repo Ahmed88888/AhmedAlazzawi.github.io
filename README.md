@@ -1,2 +1,1 @@
-# AhmedAlazzawi.github.io
-Ahmed Alazzawi's Portfolio
+# Ahmed Alazzawi's Portfolio
