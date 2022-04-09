@@ -1,6 +1,6 @@
 /*
 * Resume template
-* Created by : Ahmed Essa
+* Created by : Ahmed Essa // thank you fellow Ahmed :)
 * website : www.ahmedessa.net
 */
 
@@ -593,6 +593,7 @@ a.active {
     padding-top: 55px;
 }
 
+/* modal */
 .modal-content {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
     border: none;
