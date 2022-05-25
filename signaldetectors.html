@@ -60,10 +60,7 @@
                     <!-- sub title -->
                     <h3>UCSC - Mechatroncis</h3>
                     <!-- TODO: image -->
-                    <figure>
-                        <br /> <center><img src="img/mech/bot-front.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Rob Front View</center><br /></figcaption>
-                    </figure>
+                    <br /><br />
                     <!-- <div class="h-50"></div> -->
 
                     <h5>Project Description</h5>
@@ -72,112 +69,197 @@
                     <br />
 
 
-                    <h5>The Challenge</h5>
-                    <p>The challenge is to build a small autonomous robot that can navigate a standard field and advance through the field while avoiding the pit in the center. The robot must locate 2 out of 3 randomly placed vat towers, recognize the single correct side, then find the correct hole in which to deposit a ping-pong ball. All while avoiding a randomly placed obstacle on the field.The robots begin in a random orientation in one of the four corners of the map and are expected to solve 2 out of 3 towers in under 2 minutes and remain in bounds. </p>
+                    <!-- Beacon Detector -->
+                    <h5>The Beacon Detector</h5>
+                    <p>The purpose of this circuit is to detect signal from at least 6 feet away and convert the signal to a digital output shown by an LED. This circuit was prototyped on a breadboard using MCP6004 quad Op-Amp chips, an LM339 comparator chip, and many resistors and capacitors. After prototyping, the circuit was soldered onto a perfboard. </p>
                     <figure>
-                        <br /> <center><img src="img/mech/marked-field.png" alt="Annotated field" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Annotated Field</center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/beacon-breadboardpng.png" alt="Beacon Detector on Breadboard" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Beacon Detector on Breadboard</center><br /></figcaption>
                     </figure>
-                    <p>The field is white and 8’x8’ ft large with boundaries marked by 2” black tape. The keep out zone is similarly marked by 2" black tape.</p>
+                    <p>Components list: 
+                        <ul>
+                            <li>MCP6004 Quad Op-Amp Chip </li>
+                            <li>LM339 Comparator Chip </li>
+                            <li>Phototransistor</li>
+                            <li>LEDs</li>
+                            <li>Assorted resistors and capacitors </li>
+                        </ul>
+                    </p>
+
+                    <p>The analog circuit for the Beacon Detector uses these stages to detect a 2kHz IR signal at up to 10 feet away from the phototransistor. </p>
                     <figure>
-                        <br /> <center><img src="img/mech/marked-tower.png" alt="Annotated tower" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Vat Towers</center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/beacon-block.png" alt="Beacon Detector Block Diagram" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Beacon Detector Block Diagram</center><br /></figcaption>
                     </figure>
-                    <p>The towers have beacons at the top which emit a strong 2kHz IR signal. A 24-26kHz track wire sits behind one of the three sides of each tower and one hole is marked by tape on each of the three sides.</p>
                     <br />
-                    <h4>Requirements</h4>
-                    <p>To pass the final checkoff, the robot must solve two randomly placed towers by:</p>
-                    <ul>
-                        <li>Locating the signal emitting towers</li>
-                        <li>Finding the correct side of a tower</li>
-                        <li>Depositing a ping pong ball in the tape marked hole on the correct side</li>
-                        <li>Avoiding the box obstacle</li>
-                    </ul>
-                    <br />
-
-                    <!-- the team -->
-                    <h5>The Team</h5>
-                    <p>The team worked tirelessly for over 12 hours a day for five weeks to produce a smart rover and an efficient field completion time.</p>
+                   
+                    <!-- Transresistive -->
+                    <h4>Transresistive Op-Amp </h4>
                     <figure>
-                        <br /> <center><img src="img/mech/teamimg_full.jpg" alt="Team Image" class="img-responsive"  width="60%" height="60%"/></center>
-                        <figcaption><center><a href="https://www.linkedin.com/in/kmojabi/" target="_blank">Kian Mojabi (left)</a>, <a href="https://www.linkedin.com/in/ahmedalazzawi8/" target="_blank">Ahmed Alazzawi (right)</a></center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/transresistive_c.png" alt="Transresistive Circuit Diagram" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Transresistive Circuit Diagram</center><br /></figcaption>
                     </figure>
-                    <p>In this project, I took charge of software development and system engineering. I also aided with electrical engineering and testing the bot’s many circuits.</p>
-
-                    <!-- Robot Implementation -->
-                    <h5>Robot Implementation</h5>
+                    <p>The transresistive Op-Amp takes is the first stage of the beacon detector circuit in which the 2kHz input from the phototransistor is turned into a linear square wave as below. </p>
+                    <br />
                     <figure>
-                        <br /> <center><img src="img/mech/bot.png" alt="Final bot physical and mechanical drawing" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Physical Robot (left), Mechanical Drawing (right)</center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/transresistive_t.png" alt="Transresistive Stage Output" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Transresistive Stage Output</center><br /></figcaption>
                     </figure>
+                    <br />
+                    <!-- /Transresistive -->
 
-                    <h4>System Architecture</h4>
-                    <p>The system diagram below shows all the components that went into creating Rob. A PIC32 microcontroller was the main computer on board. A total of 16 different sensors and 7 motors were connected to it.</p>
+                    <!-- Non-Inverting Amplification  -->
+                    <h4>Non-Inverting Amplification  </h4>
+                    <p>After this, the signal goes through 4 stages of non-inverting amplification, each amplifying by a factor of 11.  The amplification is done by using an Op-Amp in the non-inverting amplifier configuration as shown in the image below:</p> 
                     <figure>
-                        <br /> <center><img src="img/mech/SystemBlockDiagram.drawio.png" alt="System Diagram" class="img-responsive"  width="100%" height="100%"/></center>
-                        <figcaption><center>System Diagram</center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/gain_c.png" alt="Non-Inverting Amplification Circuit" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Non-Inverting Amplification Circuit Diagram</center><br /></figcaption>
                     </figure>
-                    <p>The microcontroller was powered by a power distribution board which is connected to a 9.9V LiFe battery and provides the PIC32 with clean power signal and had multiple 9.9V output ports. Custom power distribution boards were built using voltage regulators to supply 3.3V and 5.0V outputs where necessary.</p>
+                    <p>The image below shows a scope trace of a signal amplified by a factor of 2: </p>
                     <br />
-                    
-
-                    <!-- sensor stuff here -->
-                    <p>The robot utilizes:</p>
-                    <ul>
-                        <li><u>1 custom built 2kHz beacon detector</u> that provides analog input and senses signals from up to 10’ far.</li>
-                        <li><u>2 custom built Track Wire (24-26kHz) detection circuits</u>. The difference of these analog signals efficiently determines where the correct side is.</li>
-                        <li><u>3 Servo motors</u> to move the alignment arms and move the release mechanism.</li>
-                        <li><u>4 DC motors</u> to drive four mecanum wheels.</li>
-                        <li><u>6 roller switches</u> as bump sensors to tell when Rob has bumped into an obstacle.</li>
-                        <li><u>7 tape sensors</u> that run on 3.3V to tell when it is crossing the map’s boundaries and when it has found the tape marked holes.</li>
-                    </ul>
-                    <p>All sensors ran on 3.3V as the PIC32 uses 3.3V logic levels. The servo motors were powered with a 5.0V signal and the DC motors were powered by a nominal 8.0V signal to prevent battery voltage variations from affecting the speed of the robot.</p>
-                    <p>Hysteresis bounds were imposed on all analog sensors to reject noise and prevent the spamming of events. Digital signals such as the bump sensors were debounced using a 200Hz timer to clean up the signal.</p>
-                    <br />
-                    
-                    
-
-                    <h4>Software </h4>
-                    <p>This project was developed in C on a PIC32 microcontroller provided as class material. This project was developed in C. The code is in a private repository to keep academic integrity.</p>
-                    <br />
-                    <p>The hierarchical state machine (HSM) described below was developed on the Events and Services Framework. The framework continuously polls for detectable changes in the system and posts them as events to specific service functions that handle them.</p>
                     <figure>
-                        <br /> <center><img src="img/mech/HSM-top.png" alt="HSM Top Level" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Top Level of Hierarchical State Machine</center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/gain_t.png" alt="Non-Inverting Amplification Output" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Non-Inverting Amplification Output</center><br /></figcaption>
                     </figure>
-                    <p>This level of the state machine defines the actions Rob takes at a high level. Rob starts in the FirstSearch state where it tries to find the first beacon, then goes enters the GoToBeacon state when it finds the closest one. After this Rob enters the Solve state. Here Rob either solves the tower or determines it has found the dead robot obstacle on the field. If Rob solves the tower, it performs the SecondSearch maneuver until it finds the second tower’s beacon and repeats the approach and solving process. If Rob determines that it has bumped into an obstacle that is not a vat tower, it enters the Evade state then returns to the first search state.</p>
                     <br />
+                    <!-- /Non-Inverting Amplification  -->
 
-                    <p>Each bubble in the top level of the HSM above defines a lower-level state machine that handles the larger task at hand. </p> <br />
-
-                    <p>More details on these sub state machines coming soon!</p> <br />
-                    
-
-                    <!-- electronics -->
-                    <h4>Electronics</h4>
-                    <p>The robot uses two different custom-built sensors. See the <a href="./signaldetectors.html">Signal Detectors</a> page for a more in depth description.</p>
-                    <br />
-
-
-
-                    <h5>Unique Features</h5>
-                    <p>While most teams opted for a simple two-wheel design, Rob uses four mecanum drive wheels allowing it to use unique maneuvers to traverse the field. This simple modification meant that the software to drive Rob is slightly more complex but made solving the towers much easier and faster.</p>
-
+                    <!-- Bandpass Filter -->
+                    <h4>Bandpass Filter</h4>
+                    <p>Then, the signal is filtered to reject any signal that has a frequency other than 2kHz. The filter designed for this circuit is a 4th order Butterworth Bandpass filter. The center frequency is 2kHz with cutoff frequencies of 1.8kHz and 2.2kHz. The circuit for the filter is shown below as well as its simulated response: </p> 
                     <figure>
-                        <br /> <center><img src="img/mech/arms.gif" alt="Arms and track wire sensors" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Using Arms to Avoid Corners and Align with Towers</center><br /></figcaption>
+                        <br /> <center><img src="img/signaldetectors/bandpass2k_c.png" alt="4th Order Butterworth Bandpass Filter Circuit" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>4th Order Butterworth Bandpass Filter Circuit Diagram</center><br /></figcaption>
                     </figure>
-                    <p>Rob also has two moving arms and two tank wire detectors instead of one. Rob uses the moving arms to quickly align with the face of a tower then can immediately tell where the correct side is based on the difference of the signals from the two track wire detectors.</p>
+                    <p>Note that the filter also uses virtual ground to avoid cutting off the lower part of the wave. This filter was tested with 1.5kHz and 2.5kHz IR noise and successfully attenuated them.</p>
+                    <br />
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/bandpass2k_t.png" alt="Bandpass Filter Response" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Bandpass Filter Response</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Bandpass Filter -->
+
+                    <!-- Peak Detector  -->
+                    <h4>Peak Detector </h4>
+                    <p>The next stage of this circuit is the peak detector, which is the first step in converting the signal from a sinusoidal wave to a digital HIGH or LOW. This stage uses a resistor and capacitor with an RC time constant of 10ms to detect the peaks of the wave and hold the signal at the peak. This is done by quickly charging a small capacitor and allowing it to slowly discharge with a large resistor in parallel. The circuit shown below uses a buffer Op-Amp and a diode to force the current into the capacitor: </p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/peakbd_c.png" alt="Peak Detector Circuit" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Peak Detector Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <p>The trace below shows the peak detector following an input sinusoidal signal. </p>
+                    <br />
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/peakbd_t.png" alt="Peak Detector Scope Trace" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Peak Detector Scope Trace</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Peak Detector -->
+
+                    <!-- Comparator and LED Buffer -->
+                    <h4>Comparator and LED Buffer</h4>
+                    <p>The final stages of this circuit are used to complete the analog to digital conversion. The peak detector’s output is routed to the comparator which acts as a Schmitt trigger. The comparator has two threshold bounds. If a signal exceeds the high thresholds, the comparator outputs a LOW 0 volts. If a signal is below the lower threshold, the comparator outputs HIGH 3.3V. Combining this with an LED in a pull-up configuration effectively inverts the comparator’s output and tells when a signal is detected. The comparator configuration as well as the LED Buffer are shown below </p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/comp_c2.png" alt="Comparator Circuit" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Comparator Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/comp_c.png" alt="LED Buffer Circuit" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>LED Buffer Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Comparator and LED Buffer -->
+
+                    <!-- Other components -->
+                    <h4>Other Components</h4>
+                    <p>It is important to note that some AC coupling was added after each major stage to remove the DC component from AC signals. This was done by implementing a high pass filter with a low cutoff frequency of ~160Hz.</p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/ac_c.png" alt="AC Coupling Circuit" class="img-responsive"  width="25%" height="25%"/></center>
+                        <figcaption><center>AC Coupling Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <br />
+
+                    <p>Another vital component is the split rail buffer. This provides the necessary 1.65V to offset the AC signals and prevent losing the lower half of the sinusoidal waves.</p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/splitrail.png" alt="Split Rail Buffer Circuit" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Split Rail Buffer Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Other Components -->
+                    <!-- /Beacon Detector -->
 
 
-                    <p>Rob has a two-step launch process in which the launch key and the main switch must be used to ARM the robot. The two switches connected in series. </p>
+                    <!-- Track Wire -->
+                    <h5>The Track Wire Detector </h5>
+                    <!-- Track Wire Intro -->
+                    <p>The Track Wire Detector uses similar circuit components to detect current running through a wire at 24-26kHz. This was also first prototyped on a breadboard then soldered onto a perfboard using the same components as the Beacon Detector.</p>
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/track-breadboardpng.png" alt="Track Wire on Breadboard" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Track Wire on Breadboard</center><br /></figcaption>
+                    </figure>
+                    <p>The analog circuit for the Track Wire Detector uses these stages to detect a 24-26kHz signal that is 2” away from the input stage. The circuit is very similar to the Beacon Detector discussed above with a few notable differences.</p>
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/trackwire-block.png" alt="Track Wire Block Diagram" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Track Wire Block Diagram</center><br /></figcaption>
+                    </figure>
+                    <!-- /Track Wire Intro -->
+
+                    <!-- Tank Circuit  -->
+                    <h4>Tank Circuit</h4>
+                    <p>The first stage of the detector is the tank circuit. It uses a 10mH inductor to pick up the signals from the wires and charge/discharge a 3.3nF capacitor. The result is a sine wave that oscillates at the frequency of the wire. </p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/tank_c.png" alt="Tank Circuit" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Tank Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Tank Circuit -->
 
 
-                    <!-- <br /> <img src="img/portfolio/02.jpg" alt="" class="img-responsive" /> -->
-                    <!-- <br /> -->
-                    <!-- <br /> -->
-                    <!-- <p></p> -->
-                    <!-- <br />  -->
+                    <!-- Non-Inverting Amplification -->
+                    <h4>Non-Inverting Amplification</h4>
+                    <p>This circuit required 3 cascaded stages of 11 gain to detect the signal at a 2 inch distance.</p> 
+                    <br />
+                    <!-- /Non-Inverting Amplification -->
+
+
+                    <!-- Peak Detector -->
+                    <h4>Peak Detector</h4>
+                    <p>The peak detector remains in the same configuration however, since the input signal has a different frequency averaging at 25kHz, the time constant must be modified to track this new signal. The period of a 25kHz signal is 0.00004s. The time constant for the peak detector should be at least 5 times the period. However, through experimentation, it was found that a time constant of 0.001s gives the best result. While this does delay the system’s response, it allows for the best peak tracking.  </p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/peaktw_c.png" alt="Track Wire Peak Detector" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Track Wire Peak Detector</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Peak Detector -->
+
+
+                    <!-- Comparator -->
+                    <h4>Comparator</h4>
+                    <p>This circuit uses the LM399 to make a comparator with 1.0V and 1.8V thresholds. The circuit is similar to the comparator above with the following differences:</p>
+                    <p>R11 = 800k ohm</p>
+                    <p>R12 = 533k ohm</p>
+                    <!-- /Comparator -->
+
+                    <!-- Peak Detector -->
+                    <h4>Peak Detector</h4>
+                    <p>Due to noise from DC motors and other sources, a filter was implemented into the circuit during the final project. The filter chosen is a Butterworth Bandpass with centered at 25kHz. The circuit is displayed below:</p> 
+                    <!-- figures -->
+                    <figure>
+                        <br /> <center><img src="img/signaldetectors/twband_c.png" alt="Track Wire Band Pass Filter" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Track Wire Band Pass Filter Circuit Diagram</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    <!-- /Peak Detector -->
+
+                    <!-- /Track Wire -->
+
                 </div>
 
             
