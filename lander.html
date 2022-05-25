@@ -59,149 +59,145 @@
                     <h2>Autonomous Lunar Lander</h2>
                     <!-- sub title -->
                     <h3>UCSC Rocket Team</h3>
-                    <!-- <div class="col-md-10 col-md-offset-2"><br /> <img src="img/mech/bot-front.png" alt="" class="img-responsive"  width="75%" height="75%"/><br /></div> -->
-                    <figure>
-                        <br /> <center><img src="img/mech/bot-front.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Rob Front View</center><br /></figcaption>
-                    </figure>
-                    <!-- <div class="h-50"></div> -->
+                    <br />
 
+                    
+
+                    <!-- Project Description -->
                     <h5>Project Description</h5>
                     <!-- <br /> -->
-                    <p>This robot, or Rob, was the result of a 5 weeklong final project for ECE 118 - Intro to Mechatronics. The project merges software, electrical, mechanical, and systems engineering as well as project management to produce a fully functioning autonomous rover capable of traversing randomly generated fields and solving difficult tasks for each field.</p>
-                    <p>Here is a video of the robot completing a randomly generated field for the final checkoff:</p>
-                    <!-- embedded video -->
-                    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/g-ySNSUOM8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </iframe></center><br />
-
-                    <p>Rob the robot was developed in <u>C on a PIC32 microcontroller</u>. The logic for the robot was built on an <u>event-driven multi-level hierarchical state machine that uses over 15 sensors and drives 4 mecanum wheels</u>. Multiple <u>custom-built signal detection sensors</u> were used to tell when Rob has detected the presence of a vat tower or has found the correct side and hole to deposit the ball. The robot was designed in SOLIDWORKS 2018, and laser cut out of 0.2in thick MDF boards. It was a large assembly with multiple parts, so the equations function in SOLIDWORKS was used to quickly change mechanical parameters when necessary. In the end, Rob was one of the few robots able to clear fields efficiently in under one minute.</p>
-
-                    <h5>The Challenge</h5>
-                    <p>The challenge is to build a small autonomous robot that can navigate a standard field and advance through the field while avoiding the pit in the center. The robot must locate 2 out of 3 randomly placed vat towers, recognize the single correct side, then find the correct hole in which to deposit a ping-pong ball. All while avoiding a randomly placed obstacle on the field.The robots begin in a random orientation in one of the four corners of the map and are expected to solve 2 out of 3 towers in under 2 minutes and remain in bounds. </p>
+                    <p>The Lunar Lander project is the Payload subteams’s design for the Payload Challenge of the NASA SLI competition 2020-2021. </p>
                     <figure>
-                        <br /> <center><img src="img/mech/marked-field.png" alt="Annotated field" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Annotated Field</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/rocket21.png" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>Annotated Launch Vehicle Image</center><br /></figcaption>
                     </figure>
-                    <p>The field is white and 8’x8’ ft large with boundaries marked by 2” black tape. The keep out zone is similarly marked by 2" black tape.</p>
+
+                    <p>The Lander is the payload carried inside a 6” diameter model rocket that flies it to a <u>5000ft target apogee</u>. The lander is designed to be deployed from the descending rocket when the launch vehicle is 500ft above ground level. Onboard deployment electronics sense the correct time to deploy or receive an override signal via radio to the ignite black powder charges. These charges exert a force to push the lander out of the vehicle. The lander then descends with the aid of a parachute and self-levels upon landing. Finally, it deploys a 360-degree camera and captures an image of its landing location, then sends the image back to the ground team. The lander itself is built using the following diagrams:</p>
+
                     <figure>
-                        <br /> <center><img src="img/mech/marked-tower.png" alt="Annotated tower" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Vat Towers</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/lander-block.png" alt="Lander Block Diagram<" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Lander Block Diagram</center><br /></figcaption>
                     </figure>
-                    <p>The towers have beacons at the top which emit a strong 2kHz IR signal. A 24-26kHz track wire sits behind one of the three sides of each tower and one hole is marked by tape on each of the three sides.</p>
-                    <br />
-                    <h4>Requirements</h4>
-                    <p>To pass the final checkoff, the robot must solve two randomly placed towers by:</p>
+
+                    <figure>
+                        <br /> <center><img src="img/lander/lander-annotated.png" alt="Lander Annotated CAD<" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Lander Annotated CAD</center><br /></figcaption>
+                    </figure>
+
+                    <p>The lander is 10in tall and ~6in in diameter. In the rocket, it sits on top of the deployment electronics (newest deployment version discussed<a href="./deployment.html"> here</a>). A mechanical drawing of the payload <section></section> can be seen below:</p>
+                    <figure>
+                        <br /> <center><img src="img/lander/drawings.png" alt="Payload Section CAD Drawings<" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Payload Section CAD Drawings </center><br /></figcaption>
+                    </figure>
+
+                    <!-- MSC -->
+                    <h5>Mission Success Criteria </h5>
+                    <p>Below is a timeline of a successful mission: </p>
+                    <p>MSC#:</p>
+                    <ol>
+                        <li>All subsystems successfully initiated </li>
+                        <li>Deployment signal is successfully sent to the E-matches onboard at the correct altitude.</li>
+                        <li>The lander lands undamaged and the onboard IMU determines the lander is stationary. </li>
+                        <li>Lander’s initial angles are recorded. </li>
+                        <li>Autonomous leveling system operates motors to level the lander. </li>
+                        <li>Lander’s final angles are recorded. </li>
+                        <li>Lander raises the 360-degree camera and triggers it to capture an image of the landing site. </li>
+                        <li>Image is sent to the ground team.</li>
+                        <li>Image is received by ground team.</li>
+                    </ol>
+                    <!-- /MSC -->
+
+                    <!-- Lander Electronics -->
+                    <h5>Lander Design - Electronics</h5>
+                    <h4>Components</h4>
                     <ul>
-                        <li>Locating the signal emitting towers</li>
-                        <li>Finding the correct side of a tower</li>
-                        <li>Depositing a ping pong ball in the tape marked hole on the correct side</li>
-                        <li>Avoiding the box obstacle</li>
+                        <li>Raspberry Pi Zero W </li>
+                        <li>Adafruit BNO055 Absolute Orientation Sensor </li>
+                        <li>5x DC Motors </li>
+                        <li>3x L298n Dual Motor Drivers </li>
+                        <li>4G Network Module</li>
+                        <li>360-Degree Camera</li>
+                        <li>2x LiPo Batteries</li>
                     </ul>
                     <br />
+                    <p>The Lander uses off-the-shelf sensors and electronic components to achieve its task of autonomously self-leveling and transmitting 360-degree images. The main computer on board is a Raspberry Pi Zero W which was chosen for its compact form factor and network capabilities. The second most essential component is the Adafruit BNO055 absolute orientation sensor which provides accurate Euler angle measurements. These components help in creating the signals sent to the L298N motor drivers that drive the 4 DC motors to level the lander.</p>
 
-                    <!-- the team -->
-                    <h5>The Team</h5>
-                    <p>The team worked tirelessly for over 12 hours a day for five weeks to produce a smart rover and an efficient field completion time.</p>
+
+                    <h4>Lander Circuit</h4>
+                    <p>The image below shows how the lander components are wired.</p>
                     <figure>
-                        <br /> <center><img src="img/mech/teamimg_full.jpg" alt="Team Image" class="img-responsive"  width="60%" height="60%"/></center>
-                        <figcaption><center><a href="https://www.linkedin.com/in/kmojabi/" target="_blank">Kian Mojabi (left)</a>, <a href="https://www.linkedin.com/in/ahmedalazzawi8/" target="_blank">Ahmed Alazzawi (right)</a></center><br /></figcaption>
+                        <br /> <center><img src="img/lander/lander-wiring-diag.png" alt="Lander Wiring Diagram" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Lander Wiring Diagram</center><br /></figcaption>
                     </figure>
-                    <p>In this project, I took charge of software development and system engineering. I also aided with electrical engineering and testing the bot’s many circuits.</p>
+                    <!-- /Lander Electronics -->
 
-                    <!-- Robot Implementation -->
-                    <h5>Robot Implementation</h5>
+                    <!-- Lander Software -->
+                    <h5>Lander Design - Software</h5>
                     <figure>
-                        <br /> <center><img src="img/mech/bot.png" alt="Final bot physical and mechanical drawing" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Physical Robot (left), Mechanical Drawing (right)</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/lander-sm.png" alt="Lander State Diagram" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Lander State Diagram</center><br /></figcaption>
                     </figure>
+                    <p>This state machine was implemented in python on the RPi Zero W. The code polls the IMU to determine its acceleration state then uses the orientation data to level the lander.</p>
+                    <p>The lander is leveled by sending PWM and direction commands to the motor drivers which spin the motors as necessary to move the linear actuators. </p>
+                    <p>Lastly, the camera is deployed by actuating a motor controlling the camera deployment mechanism. The camera then captures and sends the image to the ground team.  </p>
+                    <!-- /Lander Software -->
 
-                    <h4>System Architecture</h4>
-                    <p>The system diagram below shows all the components that went into creating Rob. A PIC32 microcontroller was the main computer on board. A total of 16 different sensors and 7 motors were connected to it.</p>
-                    <figure>
-                        <br /> <center><img src="img/mech/SystemBlockDiagram.drawio.png" alt="System Diagram" class="img-responsive"  width="100%" height="100%"/></center>
-                        <figcaption><center>System Diagram</center><br /></figcaption>
-                    </figure>
-                    <p>The microcontroller was powered by a power distribution board which is connected to a 9.9V LiFe battery and provides the PIC32 with clean power signal and had multiple 9.9V output ports. Custom power distribution boards were built using voltage regulators to supply 3.3V and 5.0V outputs where necessary.</p>
-                    <br />
-                    
 
-                    <!-- sensor stuff here -->
-                    <p>The robot utilizes:</p>
+                    <!-- Deployment Electronics -->
+                    <h5>Deployment Design - Electronics</h5>
+                    <h4>Components</h4>
                     <ul>
-                        <li><u>1 custom built 2kHz beacon detector</u> that provides analog input and senses signals from up to 10’ far.</li>
-                        <li><u>2 custom built Track Wire (24-26kHz) detection circuits</u>. The difference of these analog signals efficiently determines where the correct side is.</li>
-                        <li><u>3 Servo motors</u> to move the alignment arms and move the release mechanism.</li>
-                        <li><u>4 DC motors</u> to drive four mecanum wheels.</li>
-                        <li><u>6 roller switches</u> as bump sensors to tell when Rob has bumped into an obstacle.</li>
-                        <li><u>7 tape sensors</u> that run on 3.3V to tell when it is crossing the map’s boundaries and when it has found the tape marked holes.</li>
+                        <li>Adafruit Feather 32u4 RFM95 </li>
+                        <li>Adafruit BMP 388 Barometric Altimeter  </li>
+                        <li>2x DRV8838 Motor Drivers</li>
+                        <li>9V Batteries</li>
                     </ul>
-                    <p>All sensors ran on 3.3V as the PIC32 uses 3.3V logic levels. The servo motors were powered with a 5.0V signal and the DC motors were powered by a nominal 8.0V signal to prevent battery voltage variations from affecting the speed of the robot.</p>
-                    <p>Hysteresis bounds were imposed on all analog sensors to reject noise and prevent the spamming of events. Digital signals such as the bump sensors were debounced using a 200Hz timer to clean up the signal.</p>
                     <br />
-                    
-                    
+                    <p>The deployment circuit uses an Adafruit microcontroller with an onboard radio module, a barometric altimeter and two motor drivers to supply the current necessary to ignite the black powder charge’s E-match.</p>
+                    <p>Read about how I improved this design and made it autonomous <a href="./deployment.html">here</a>. </p>
 
-                    <h4>Software </h4>
-                    <p>This project was developed in C on a PIC32 microcontroller provided as class material. This project was developed in C. The code is in a private repository to keep academic integrity.</p>
-                    <br />
-                    <p>The hierarchical state machine (HSM) described below was developed on the Events and Services Framework. The framework continuously polls for detectable changes in the system and posts them as events to specific service functions that handle them.</p>
+
+                    <h4>Deployment Circuit</h4>
+                    <p>TBelow is a wiring diagram for the circuit:</p>
                     <figure>
-                        <br /> <center><img src="img/mech/HSM-top.png" alt="HSM Top Level" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Top Level of Hierarchical State Machine</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/deployment-wiring-diag.png" alt="Lander Wiring Diagram" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Lander Wiring Diagram</center><br /></figcaption>
                     </figure>
-                    <p>This level of the state machine defines the actions Rob takes at a high level. Rob starts in the FirstSearch state where it tries to find the first beacon, then goes enters the GoToBeacon state when it finds the closest one. After this Rob enters the Solve state. Here Rob either solves the tower or determines it has found the dead robot obstacle on the field. If Rob solves the tower, it performs the SecondSearch maneuver until it finds the second tower’s beacon and repeats the approach and solving process. If Rob determines that it has bumped into an obstacle that is not a vat tower, it enters the Evade state then returns to the first search state.</p>
-                    <br />
+                    <!-- /Deployment Electronics -->
 
-                    <p>Each bubble in the top level of the HSM above defines a lower-level state machine that handles the larger task at hand. </p> <br />
 
-                    <p>More details on these sub state machines coming soon!</p> <br />
-                    
-
-                    <!-- electronics -->
-                    <h4>Electronics</h4>
-                    <p>The robot uses two different custom-built sensors. See the <a href="./signaldetectors.html">Signal Detectors</a> page for a more in depth description.</p>
-
-                    <p>The robot uses a 2kHz Beacon Detector soldered to a perfboard as shown below:</p>
+                    <!-- Deployment Software -->
+                    <h5>Deployment Design - Software</h5>
+                    <p>The deployment, implemented in C++ using the Arduino framework, follows the diagram below.</p>
                     <figure>
-                        <br /> <center><img src="img/mech/beacon-perf.jpg" alt="Beacon Detector on Perfboard" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Beacon Detector on Perfboard</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/deployment-sm.png" alt="Lander State Diagram" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Deployment State Diagram</center><br /></figcaption>
                     </figure>
+                    <p>The BMP388 sensor is set up to provide data via I2C and determines when the deployment signal is to be ignited.</p>
+                    <p>The Motor Drivers are set up to take a PWM signal with a varying duty cycle to provide the ematch with the necessary current to ignite the charges.</p>
+                    <p>The onboard radio module talks to the microcontroller via SPI and tells it when the override commands are sent. </p>
+                    <!-- /Deployment Software -->
 
-                    <p>As well as a 25kHz track wire detector, also soldered onto a perfboard and shown below:</p>
+
+                    <!-- Results -->
+                    <h5>Results</h5>
+                    <p>Below are images of the finalized lander:</p>
                     <figure>
-                        <br /> <center><img src="img/mech/tw-perf.jpg" alt="Track Wire Detector on Perfboard" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Track Wire Detector on Perfboard</center><br /></figcaption>
-                    </figure>
-                    <p>Read more about these circuits and find their schematics<a href="./signaldetectors.html">here</a>.</p>
-                    <br />
-
-                    
-
-
-
-                    <h5>Unique Features</h5>
-                    <figure>
-                        <br /> <center><img src="img/mech/drive.gif" alt="Multi Directional Drive" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Multi Directional Drive Test</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/lander-built.png" alt="Final Manufactured Lander" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Final 3D Printed Lander with Spring Loaded Arms</center><br /></figcaption>
                     </figure>
 
-                    <p>While most teams opted for a simple two-wheel design, Rob uses four mecanum drive wheels allowing it to use unique maneuvers to traverse the field. This simple modification meant that the software to drive Rob is slightly more complex but made solving the towers much easier and faster.</p>
-
                     <figure>
-                        <br /> <center><img src="img/mech/arms.gif" alt="Arms and track wire sensors" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Using Arms to Avoid Corners and Align with Towers</center><br /></figcaption>
+                        <br /> <center><img src="img/lander/lander-motor-platform.png" alt="Lander Motors on Bottom Platform" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Motors Mounted to the Lander's Bottom Platform</center><br /></figcaption>
                     </figure>
-                    <p>Rob also has two moving arms and two tank wire detectors instead of one. Rob uses the moving arms to quickly align with the face of a tower then can immediately tell where the correct side is based on the difference of the signals from the two track wire detectors.</p>
 
 
-                    <p>Rob has a two-step launch process in which the launch key and the main switch must be used to ARM the robot. The two switches connected in series. </p>
+                    <p>Unfortunately, due to COVID-19 restrictions, the team was not able to fly the rocket or test the lander. The lander was fully assembled and was able to successfully self-level within the 5-degree tolerance, but this was not tested outside the lab environment. Sadly, I can’t track down the one video I had of it working :( </p>
+                    <!-- /Results -->
 
 
-                    <!-- <br /> <img src="img/portfolio/02.jpg" alt="" class="img-responsive" /> -->
-                    <!-- <br /> -->
-                    <!-- <br /> -->
-                    <!-- <p></p> -->
-                    <!-- <br />  -->
+
                 </div>
 
             
