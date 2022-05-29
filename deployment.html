@@ -98,8 +98,7 @@
                     <p>This video shows results of testing the system while it was in the breadboarding stage. This was the final iteration of the design before moving to the next stage. The new addition to the circuit is a wire from ground to a Nano input pin, signaling when the airframe has been separated. The switch is used as an altimeter bypass to avoid having to change the breadboard’s altitude. </p>
                     <!-- embedded video -->
                     <div class="video-wrap">
-                        <iframe src="https://www.youtube.com/embed/g-ySNSUOM8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </iframe><br />
+                        <iframe src="https://www.youtube.com/embed/3j4-LXnfaAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br />
                     </div>
                     
                     <!-- /testing results -->
@@ -122,7 +121,8 @@
                     <p>The circuit uses two BMP388 sensors for redundancy and noise reduction. These sensors provide altitude data crucial to the deployment algorithm. There are also multiple switches wired indicating when the airframe has separated. These signals are processed by a 5V logic Arduino Nano which is powered by a 9V battery. Once it determines apogee conditions are met, it outputs a 5V high signal to the NPN transistor’s base pin. This closes the circuit and flows current from a separate 9V battery directly into the E-matches.</p>
                     <!-- /Deployment Circuit -->
 
-                    <!-- Deployment Software  -->
+                    <!-- Deployment Software -->
+                    <h5>Deployment Software</h5>
                     <!-- flowchart -->
                     <figure>
                         <br /> <center><img src="img/deployment/dep-flow.png" alt="Deployment Software Flowchart" class="img-responsive"  width="75%" height="75%"/></center>
@@ -130,6 +130,24 @@
                     </figure>
                     <p>The Arduino program first initializes the necessary pins and sensors in the setup function, then enters the infinite loop. In the loop, it polls the altitude sensors and all setup separation pins. Once the altitude reaches a set altitude threshold close to the calculated theoretical vehicle apogee and the separation event is detected after the switch states change, the deployment conditions are met. The Nano then waits for 2 seconds allowing the parachutes to deploy untangled, then sends a high signal to the deployment circuit to detonate the black powder.</p>
                     <!-- /Deployment Software  -->
+
+                    <h5>Mechanical Features</h5>
+                    <!-- flowchart -->
+                    <figure>
+                        <br /> <center><img src="img/deployment/deployment-cad.png" alt="Deployment CAD" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Deployment CAD</center><br /></figcaption>
+                    </figure>
+                    <p>The deployment electronics are designed to sit on one side small, 3.5in diameter plate. The 9V batteries sit on the back side of thee plate. The black powder charges are mounted on a second plate of the same size and it sits on top of the electronics. This plate is the main barrier protecting the deployment electronics from the pressure charge. Lastly, there is a third disk (pictured below) which sits on top of the black powder charges. This disk is loosely tethered to the airframe and is used take the impact force of black powder detonation to push the payload out of the airframe. This ensures that the payload is not harmed during deployment.</p>
+                    <figure>
+                        <br /> <center><img src="img/deployment/dep-disk.png" alt="Deployment Disk" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Deployment Disk</center><br /></figcaption>
+                    </figure>
+                    <p>Finally this is how the components sit together:</p>
+                    <figure>
+                        <br /> <center><img src="img/deployment/full.png" alt="Payload with Deployment" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Payload with Deployment and Disk</center><br /></figcaption>
+                    </figure>
+                    <!-- /Mechanical Features  -->
 
                     <!-- Necessary Improvements -->
                     <h5>Necessary Improvements</h5>
