@@ -62,7 +62,7 @@
                     <h3>UCSC Rocket Team</h3>
                     
                     <figure>
-                        <br /> <center><img src="img/deployment/deployment.png" alt="Deployment Mechanism" class="img-responsive"  width="40%" height="40%"/></center>
+                        <br /> <center><img src="img/deployment/deployment.png" img src="img/deployment/deployment-cad.png" alt="Deployment Mechanism" class="img-responsive"  width="40%" height="40%"/></center>
                         <figcaption><center>Deployment Mechanism</center><br /></figcaption>
                     </figure>
 
@@ -90,14 +90,18 @@
                     <h4>In Vehicle Ground Testing</h4>
                     <p>The video shows the results of testing the rocket’s separating point after detonating a black powder charge.</p>
                     <!-- embedded video -->
-                    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/g-ySNSUOM8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </iframe></center><br />
-                    
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/Afm-MRskZ0c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br />
+                    </div>
+
                     <h4>System on a Breadboard Testing</h4>
                     <p>This video shows results of testing the system while it was in the breadboarding stage. This was the final iteration of the design before moving to the next stage. The new addition to the circuit is a wire from ground to a Nano input pin, signaling when the airframe has been separated. The switch is used as an altimeter bypass to avoid having to change the breadboard’s altitude. </p>
                     <!-- embedded video -->
-                    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/g-ySNSUOM8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </iframe></center><br />
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/g-ySNSUOM8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </iframe><br />
+                    </div>
+                    
                     <!-- /testing results -->
                     
                     <!-- Deployment Circuit -->
@@ -128,6 +132,7 @@
                     <!-- /Deployment Software  -->
 
                     <!-- Necessary Improvements -->
+                    <h5>Necessary Improvements</h5>
                     <p>For this system to be more robust when autonomous and less prone to mistimed signals, it could use more information about the vehicle’s attitude. In nearly all cases, the rocket begins to tilt as it reaches its apogee which is information that can be captured by well calibrated IMU. The rocket being horizontal instead of vertical is another event indicating apogee.</p>
                     <p>Another thing is to use the altitude’s rate of change instead of direct altitude measurements to determine when the vehicle is nearing apogee. Currently the system uses a defined theoretical altitude value to determine apogee which is specific to one vehicle. If the system instead uses the rate of change in the altitude data, it can tell when the system is coming to its maximum climb. This would generalize the system and make it easier to integrate in any launch vehicle as well as ensure that deployment is successful even if the vehicle misses its calculated apogee.  </p>
                     <!-- /Necessary Improvements -->
