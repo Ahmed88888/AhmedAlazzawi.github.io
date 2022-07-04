@@ -107,6 +107,8 @@
 
                     <p>My responsibility as the Vehicle Flight Software Engineer is to use open-source autopilot software (ArduPilot) to control the experimental airship and get it ready for autonomous flight. Also, as the Payload Systems Engineer, I am responsible for designing and maintaining the payload delivery and sampling protocol at a system level.</p>
 
+                    <br />
+
                     <!-- /System Overview of the Airship Project -->
 
                     <!-- The Payload Delivery Vehicle -->
@@ -115,7 +117,7 @@
                     <h4>Vehicle Mechanical Design</h4>
                     <figure>
                         <br /> <center><img src="img/airship/vehicle-final.png" alt="" class="img-responsive"  width="100%" height="100%"/></center>
-                        <figcaption><center>Vehicle CAD and Final Prototype</center><br /></figcaption>
+                        <figcaption><center>Vehicle CAD (left) and Final Prototype Presented at Baskin Engineer Community Presentation Day (right)</center><br /></figcaption>
                     </figure>
                     <p>The images above show the final versions of the CAD and physically built UAV prototype. The vehicle has a central Aluminum spine with mounting points for the crucial components. </p>
 
@@ -203,7 +205,7 @@
                     <p>The UML diagram below shows how the C++ motor control library is set up </p>
 
                     <figure>
-                        <br /> <center><img src="img/airship/motor-uml.png" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <br /> <center><img src="img/airship/motor-uml.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
                         <figcaption><center>Airship ArduPilot Motor Classes UML Diagram</center><br /></figcaption>
                     </figure>
 
@@ -235,6 +237,45 @@
 
                     <br />
                     <!-- /Mission Planning  -->
+
+                    <!-- Vehicle Testing and Results  -->
+                    <h4>Vehicle Testing and Results </h4>
+                    <p>The vehicle’s first integrated testing was done by suspending the airframe from the ceiling and ensuring that the motors are operating correctly.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/testing-setup.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Suspended Vehicle without Envelope</center><br /></figcaption>
+                    </figure>
+
+                    <p>The vehicle was then configured to receive input commands from a remote control module as described below.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/rc-setup.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Testing Setup with Remote Controller Unit</center><br /></figcaption>
+                    </figure>
+
+                    <p>This is the A-tail control surface deflection in response to yaw commands</p>
+                    <figure>
+                        <br /> <center><img src="img/airship/Atail-yaw.gif" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>A-Tail Yaw Response</center><br /></figcaption>
+                    </figure>
+
+                    <p>This is the A-tail control surface deflection in response to pitch commands</p>
+                    <figure>
+                        <br /> <center><img src="img/airship/Atail-pitch.gif" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>A-Tail Pitch Response</center><br /></figcaption>
+                    </figure>
+
+                    <p>This full yaw control with thrust vectoring</p>
+                    <figure>
+                        <br /> <center><img src="img/airship/full-yaw.gif" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>A-Tail and Thrust Vectoring Yaw Response</center><br /></figcaption>
+                    </figure>
+                    
+
+
+                    <br />
+                    <!-- /Vehicle Testing and Results  -->
 
 
                     <!-- Vehicle Status and Next Steps -->
@@ -282,18 +323,25 @@
                     <p>Next, the gifs below are from testing the winch control and show how the sampling protocol works. The winch is lowered when the vehicle arrives at a sampling location.</p>
 
                     <figure>
-                        <br /> <center><img src="img/airship/touching-water.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <br /> <center><img src="img/airship/touching-water.gif" alt="" class="img-responsive"  width="30%" height="30%"/></center>
                         <figcaption><center>Winch Controller Lowering Payload - Sensing Water</center><br /></figcaption>
                     </figure>
 
                     <p>If the capacitive water sensor is sensing water and there is some slack in the winch line, then the vehicle is at a valid sampling location.</p>
 
                     <figure>
-                        <br /> <center><img src="img/airship/slack-no-water.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <br /> <center><img src="img/airship/slack-no-water.gif" alt="" class="img-responsive"  width="30%" height="30%"/></center>
                         <figcaption><center>Winch Controller Lowering Payload - Sensing Slack in Tension and No Water</center><br /></figcaption>
                     </figure>
 
                     <p>If the strain sensor senses slack in the line and no water present, then it must be at an invalid location and retracts the sensor.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/branch.gif" alt="" class="img-responsive"  width="30%" height="30%"/></center>
+                        <figcaption><center>Winch Controller Lowering Payload - Stuck While Retracting</center><br /></figcaption>
+                    </figure>
+
+                    <p>Lastly, the system checks for tension while retracting the water sensor. If tension is sensed, there could be a branch in the way. So the controller lowers and pulls the sonde multiple times until it is free. If this takes too long, an error message is sent to the ground station. In this case, the sensor was able to swing itself free.</p>
 
                     <p>This subsystem was developed by <a href="https://www.linkedin.com/in/daniellelaganiere?trk=public_profile_browsemap" target="_blank">Danielle Laganiere.</a></p>
 
