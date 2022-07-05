@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ahmed Alazzawi - Trajectory Estimator</title>
+    <link rel="icon" href="img/icons8-rocket-64.png" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/aos.css" rel="stylesheet">
+    <!-- main style -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+
+            <div class="preloader" aria-busy="true" aria-label="Loading, please wait." role="progressbar">
+            </div>
+
+        </div>
+    </div>
+    <!-- ./Preloader -->
+    
+    <!-- header -->
+    <header class="navbar-fixed-top">
+        <nav>
+            <ul>
+                <!-- <li><a href="./index.html">Home</a></li> -->
+                <li><a href="./index.html#about">About</a></li>
+                <li><a href="./index.html#experience">Experience</a></li>
+                <li><a href="./index.html#projects">Projects</a></li>
+                <li><a href="./index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./header -->
+
+
+    <!-- project desc -->
+    <div class="section" id="desc"></div>
+        <div class="container">
+            <div class="portfolio-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <!-- title -->
+                    <h2>Rocket Landing Location Estimator</h2>
+                    <!-- sub title -->
+                    <h3>UCSC - Rocket Team</h3>
+                    <br />
+
+                    <!-- video -->
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/ns3wd5OPlTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </iframe><br />
+                    </div>
+                    <figure>
+                        <figcaption><center>Full Scale Rocket Launch with Onboard Payload and Camera</center><br /></figcaption>
+                    </figure>
+                    <br />
+
+                    <!-- Project Description -->
+                    <h5>Project Description</h5>
+                    <!-- <br /> -->
+                    <figure>
+                        <br /> <center><img src="img/estimator/rocket-annotated.png" alt="" class="img-responsive"  width="90%" height="90%"/></center>
+                        <figcaption><center>Annotated Image of Payload Bay in 2022 Rocket "Cruz Control"</center><br /></figcaption>
+                    </figure>
+
+                    <p>This project is part of the payload challenge for NASA’s 2022 Student Launch Initiative competition. The challenge emulates flying a vehicle to a new planet and landing on it for the first time. Provided that the rocket lands in a 5000’x5000’ landing area that is broken down into 20x20 grids each measuring 250’x250’, the team must locate the grid cell corresponding to the rocket’s final location. Given that this is a space mission to a new location, the payload has the following restrictions:</p>
+                    <ul>
+                        <li>It cannot utilize any form of GPS aid to solve the challenge.</li>
+                        <li>It cannot rely on magnetic field readings from a magnetometer.</li>
+                        <li>It cannot use radio signal strength and direction data.</li>
+                    </ul>
+                    <p>The team decided to build a state estimation system with a Kalman filter in python on a Raspberry Pi. The details of this estimator are below.</p>
+                    <!-- /Project Description -->
+
+                    <!-- Estimator Implementation -->
+                    <h5>Estimator Implementation</h5>
+                    <!-- Mechancical -->
+                    <h4>Mechancical</h4>
+                    <p>The mechanical design and final prototype can be seen below.</p>
+                    
+                    <figure>
+                        <br /> <center><img src="img/estimator/est-full.png" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>Payload CAD (left) and Final Implementation (center and right)</center><br /></figcaption>
+                    </figure>
+                    <!-- /Mechancical -->
+
+                    <!-- Electrical -->
+                    <h4>Electrical</h4>
+                    <p>The estimator utilizes this circuit to estimate the rocket’s final position.</p>
+                    <figure>
+                        <br /> <center><img src="img/estimator/est-circuit-block.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Estimator Circuit Block Diagram</center><br /></figcaption>
+                    </figure>
+                    <p>Note: the inclusion of the GPS module is strictly for having a “true” position to compare against estimator results during testing and at the final launch. It is used to train the estimator during test flights and check the accuracy of the output.</p>
+                    <!-- /Electrical -->
+
+                    <!-- Software -->
+                    <h4>Software</h4>
+                    <p>This flow chart shows how the main estimation loop is implemented in python. </p>
+                    <figure>
+                        <br /> <center><img src="img/estimator/est-software-flow-2.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Estimator Software Flow Chart</center><br /></figcaption>
+                    </figure>
+                    <!-- /Software -->
+                    <!-- /Estimator Implementation -->
+
+                    <!-- Flight Stages and Payload Deployment   -->
+                    <h5>Flight Stages and Payload Deployment</h5>
+                    <p>Since the estimator has a down facing camera, it is deployed after the rocket separates for the recovery event. The two stages of flight relevant to the payload are detailed in this diagram. </p>
+                    <figure>
+                        <br /> <center><img src="img/estimator/illustration.png" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>Estimator Circuit Block Diagram</center><br /></figcaption>
+                    </figure>
+                    <p>An autonomous payload deployment mechanism was developed to launch the estimator out of the rocket after the rocket separates. <a href="/deployment.html" target="_blank">Read more about this project here.</a></p>
+                    <br />
+                    <!-- /Flight Stages and Payload Deployment -->
+
+                    <!-- Flight Results and Analysis  -->
+                    <h5>Flight Results and Analysis</h5>
+                    <p>The team flew the full-scale rocket up to ~3800ft as shown by the video above. While the target apogee for this rocket was 4800ft, this was still a big launch for the team. Unfortunately, the logged data and footage logged by the payload were corrupted and the team was only able to retrieve footage from after the separation event.</p>
+                    <p>I believe the cause of this issue is the Raspberry Pi’s SD card connection. The forces from the deployment charges as well as the initial pulling of the parachutes must have produced large enough vibrations that caused the SD card to wiggle and be momentarily disconnected. This causes an abrupt shutdown and restart without appropriately storing the flight data currently in memory. The on-board footage in the video is what remained after the restart.</p>
+                    <figure>
+                        <br /> <center><img src="img/estimator/team-cropped.jpg" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center></center><br /></figcaption>
+                    </figure>
+                    <p>In any case, this was the first time in 4 years that the team has launched a functioning payload on a full-scale rocket. Given more time, the payload subteam could have easily ironed out the bugs and made a more reliable and flight ready system. Regardless, this was a huge accomplishment for the team.</p>
+                    <!-- /Flight Results and Analysis  -->
+
+                </div>
+
+            
+
+
+
+            </div>
+        </div>
+    <!-- ./project desc -->
+
+
+    <!-- links -->
+    <div class="h-50"></div>
+    <div class="h-50"></div>
+    <center><a href="./index.html#projects"><h5><u>See More Projects</u></h5></a></center>
+    <br />
+    <center><a href="./index.html#contact"><h5><u>Contact</u></h5></a></center>
+    <div class="h-50"></div>
+    <div class="h-50"></div>
+    <!-- ./links -->
+    
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!--  plugins  -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+
+    <!--  main script  -->
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
