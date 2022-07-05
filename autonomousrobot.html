@@ -76,8 +76,11 @@
                     </iframe><br />
                     </div>
 
+                    <br />
                     <p>Rob the robot was developed in <u>C on a PIC32 microcontroller</u>. The logic for the robot was built on an <u>event-driven multi-level hierarchical state machine that uses over 15 sensors and drives 4 mecanum wheels</u>. Multiple <u>custom-built signal detection sensors</u> were used to tell when Rob has detected the presence of a vat tower or has found the correct side and hole to deposit the ball. The robot was designed in SOLIDWORKS 2018, and laser cut out of 0.2in thick MDF boards. It was a large assembly with multiple parts, so the equations function in SOLIDWORKS was used to quickly change mechanical parameters when necessary. In the end, Rob was one of the few robots able to clear fields efficiently in under one minute.</p>
+                    <br />
 
+                    <!--The Challenge -->
                     <h5>The Challenge</h5>
                     <p>The challenge is to build a small autonomous robot that can navigate a standard field and advance through the field while avoiding the pit in the center. The robot must locate 2 out of 3 randomly placed vat towers, recognize the single correct side, then find the correct hole in which to deposit a ping-pong ball. All while avoiding a randomly placed obstacle on the field.The robots begin in a random orientation in one of the four corners of the map and are expected to solve 2 out of 3 towers in under 2 minutes and remain in bounds. </p>
                     <figure>
@@ -91,6 +94,7 @@
                     </figure>
                     <p>The towers have beacons at the top which emit a strong 2kHz IR signal. A 24-26kHz track wire sits behind one of the three sides of each tower and one hole is marked by tape on each of the three sides.</p>
                     <br />
+                    <!--Requirements -->
                     <h4>Requirements</h4>
                     <p>To pass the final checkoff, the robot must solve two randomly placed towers by:</p>
                     <ul>
@@ -100,15 +104,21 @@
                         <li>Avoiding the box obstacle</li>
                     </ul>
                     <br />
+                    <!-- /Requirements -->
+                    <!--/The Challenge -->
+
 
                     <!-- the team -->
                     <h5>The Team</h5>
-                    <p>The team worked tirelessly for over 12 hours a day for five weeks to produce a smart rover and an efficient field completion time.</p>
+                    <p>The team worked tirelessly over 12 hours a day for nearly five weeks to produce a smart rover with an efficient field completion time.</p>
                     <figure>
-                        <br /> <center><img src="img/mech/teamimg_full.jpg" alt="Team Image" class="img-responsive"  width="60%" height="60%"/></center>
+                        <br /> <center><img src="img/mech/teamimg_full.jpg" alt="Team Image" class="img-responsive"  width="50%" height="5%"/></center>
                         <figcaption><center><a href="https://www.linkedin.com/in/kmojabi/" target="_blank">Kian Mojabi (left)</a>, <a href="https://www.linkedin.com/in/ahmedalazzawi8/" target="_blank">Ahmed Alazzawi (right)</a></center><br /></figcaption>
                     </figure>
                     <p>In this project, I took charge of software development and system engineering. I also aided with electrical engineering and testing the bot’s many circuits.</p>
+                    <br />
+                    <!-- /the team -->
+
 
                     <!-- Robot Implementation -->
                     <h5>Robot Implementation</h5>
@@ -117,6 +127,7 @@
                         <figcaption><center>Physical Robot (left), Mechanical Drawing (right)</center><br /></figcaption>
                     </figure>
 
+                    <!--System Architecture -->
                     <h4>System Architecture</h4>
                     <p>The system diagram below shows all the components that went into creating Rob. A PIC32 microcontroller was the main computer on board. A total of 16 different sensors and 7 motors were connected to it.</p>
                     <figure>
@@ -140,9 +151,9 @@
                     <p>All sensors ran on 3.3V as the PIC32 uses 3.3V logic levels. The servo motors were powered with a 5.0V signal and the DC motors were powered by a nominal 8.0V signal to prevent battery voltage variations from affecting the speed of the robot.</p>
                     <p>Hysteresis bounds were imposed on all analog sensors to reject noise and prevent the spamming of events. Digital signals such as the bump sensors were debounced using a 200Hz timer to clean up the signal.</p>
                     <br />
+                    <!-- /System Architecture -->
                     
-                    
-
+                    <!-- Software -->
                     <h4>Software </h4>
                     <p>This project was developed in C on a PIC32 microcontroller provided as class material. This project was developed in C. The code is in a private repository to keep academic integrity.</p>
                     <br />
@@ -156,10 +167,12 @@
 
                     <p>Each bubble in the top level of the HSM above defines a lower-level state machine that handles the larger task at hand. </p> <br />
 
-                    <p>More details on these sub state machines coming soon!</p> <br />
+                    <p>More details on these sub state machines coming soon!</p> 
+                    <br />
+                    <!-- /Software -->
                     
 
-                    <!-- electronics -->
+                    <!-- Electronics -->
                     <h4>Electronics</h4>
                     <p>The robot uses two different custom-built sensors. See the <a href="./signaldetectors.html">Signal Detectors</a> page for a more in depth description.</p>
 
@@ -176,11 +189,9 @@
                     </figure>
                     <p>Read more about these circuits and find their schematics <a href="./signaldetectors.html">here</a>.</p>
                     <br />
+                    <!-- /Electronics -->               
 
-                    
-
-
-
+                    <!-- Unique Features -->
                     <h5>Unique Features</h5>
                     <figure>
                         <br /> <center><img src="img/mech/drive.gif" alt="Multi Directional Drive" class="img-responsive"  width="75%" height="75%"/></center>
@@ -197,6 +208,8 @@
 
 
                     <p>Rob has a two-step launch process in which the launch key and the main switch must be used to ARM the robot. The two switches connected in series. </p>
+                    <!-- /Unique Features -->
+
 
 
                     <!-- <br /> <img src="img/portfolio/02.jpg" alt="" class="img-responsive" /> -->
