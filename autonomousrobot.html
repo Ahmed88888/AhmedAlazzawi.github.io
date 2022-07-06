@@ -152,14 +152,27 @@
                     <p>Hysteresis bounds were imposed on all analog sensors to reject noise and prevent the spamming of events. Digital signals such as the bump sensors were debounced using a 200Hz timer to clean up the signal.</p>
                     <br />
                     <!-- /System Architecture -->
+
+                    <!-- Events and Services Framework -->
+                    <h4>Events and Services Framework</h4>
+                    <p>The software runs on a custom task scheduling framework that polls for continuously polls for events and services any that sensed/generated. It follows this diagram:</p>
+                    <figure>
+                        <br /> <center><img src="img/mech/es-flowchart.png" alt="HSM Top Level" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Events and Services Framework Flowchart</center><br /></figcaption>
+                    </figure>
+
+                    <p>Events are detectable changes in the system. Services are functions designed to react to any generated event. This is what makes the robot event-driven. The robot has multiple event checkers for each sensor and peripheral and only acts when there is detectable change that has caused an event.</p>
+
+                    <br />
+                    <!-- /Events and Services Framework -->
                     
-                    <!-- Software -->
-                    <h4>Software </h4>
+                    <!-- Hierarchical State Machines -->
+                    <h4>Hierarchical State Machine</h4>
                     <p>This project was developed in C on a PIC32 microcontroller provided as class material. The code is in a private repository to keep academic integrity.</p>
                     <br />
                     <p>The hierarchical state machine (HSM) described below was developed on the Events and Services Framework. The framework continuously polls for detectable changes in the system and posts them as events to specific service functions that handle them.</p>
                     <figure>
-                        <br /> <center><img src="img/mech/HSM-top.png" alt="HSM Top Level" class="img-responsive"  width="50%" height="50%"/></center>
+                        <br /> <center><img src="img/mech/HSM-top.png" alt="HSM Top Level" class="img-responsive"  width="100%" height="100%"/></center>
                         <figcaption><center>Top Level of Hierarchical State Machine</center><br /></figcaption>
                     </figure>
                     <p>This level of the state machine defines the actions Rob takes at a high level. Rob starts in the FirstSearch state where it tries to find the first beacon, then goes enters the GoToBeacon state when it finds the closest one. After this Rob enters the Solve state. Here Rob either solves the tower or determines it has found the dead robot obstacle on the field. If Rob solves the tower, it performs the SecondSearch maneuver until it finds the second tower’s beacon and repeats the approach and solving process. If Rob determines that it has bumped into an obstacle that is not a vat tower, it enters the Evade state then returns to the first search state.</p>
@@ -167,9 +180,33 @@
 
                     <p>Each bubble in the top level of the HSM above defines a lower-level state machine that handles the larger task at hand. </p> <br />
 
-                    <p>More details on these sub state machines coming soon!</p> 
+                    <figure>
+                        <br /> <center><img src="img/mech/HSM-firstsearch.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>First Search Sub State Machine</center><br /></figcaption>
+                    </figure>
                     <br />
-                    <!-- /Software -->
+
+                    <figure>
+                        <br /> <center><img src="img/mech/HSM-gotobeacon.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Go To Beacon Sub State Machine</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    
+                    <figure>
+                        <br /> <center><img src="img/mech/HSM-secondsearch.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Second Search Sub State Machine</center><br /></figcaption>
+                    </figure>
+                    <br />
+                    
+                    <figure>
+                        <br /> <center><img src="img/mech/HSM-evade.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Evade Sub State Machine</center><br /></figcaption>
+                    </figure>
+                    <br />
+
+                    <p>More details on the Solve sub state machine coming soon!</p> 
+                    <br />
+                    <!-- /Hierarchical State Machines -->
                     
 
                     <!-- Electronics -->
