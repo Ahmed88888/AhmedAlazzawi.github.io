@@ -60,8 +60,8 @@
                     <!-- sub title -->
                     <h3>Vehicle Flight Software and Sampling Payload System Design </h3>
                     <figure>
-                        <br /> <center><img src="img/airship/airship.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Airship CAD with Lake Mock Up Image</center><br /></figcaption>
+                        <br /> <center><img src="img/airship/presentation-day-img.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Assembled Airship at Project Presentation Day</center><br /></figcaption>
                     </figure>
                     <!-- <div class="h-50"></div> -->
 
@@ -73,8 +73,8 @@
                     <p>The aim of this project is to design and build an autonomous lighter-than-air UAV and payload delivery mechanism that can fly to remote bodies of water, efficiently hover over sampling locations, and deploy an industry-standard sensor array used by hydrologists to gather data about the water’s health and assess its quality. This would eliminate the need for hydrologists to travel, allowing for more efficient data collection. </p>
 
                     <figure>
-                        <br /> <center><img src="img/airship/mock-2.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Airship Sampling Lake Mock Up Image (Background courtesy of Fine Arts America)</center><br /></figcaption>
+                        <br /> <center><img src="img/airship/mock-3.png" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Airship Sampling Lake Mock Up Image</center><br /></figcaption>
                     </figure>
 
                     <p>To achieve this goal, the project responsibilities were divided between two cross-functional teams. The Vehicle Team is responsible for delivering and maintaining the vehicle airframe. The Payload Team is then responsible for designing the embedded systems to fly the vehicle and avoid obstacles, the sensor delivery mechanism, and the sampling protocol.</p>
@@ -111,8 +111,89 @@
 
                     <!-- /System Overview of the Airship Project -->
 
+                     <!-- System Tests Results -->
+                     <h5>System Tests Results</h5>
+                    <!-- Vehicle Testing and Results  -->
+                    <h4>Vehicle Testing and Results </h4>
+                    <p>The vehicle’s first integrated testing was done by suspending the airframe from the ceiling and ensuring that the motors are operating correctly.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/testing-setup.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Suspended Vehicle without Envelope</center><br /></figcaption>
+                    </figure>
+
+                    <p>The vehicle was then configured to receive input commands from a remote control module as described below.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/rc-setup.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Testing Setup with Remote Controller Unit</center><br /></figcaption>
+                    </figure>
+
+                    <p>This is the A-tail control surface deflection in response to yaw commands</p>
+                    <figure>
+                        <br /> <center><img src="img/airship/Atail-yaw.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>A-Tail Yaw Response</center><br /></figcaption>
+                    </figure>
+
+                    <p>This is the A-tail control surface deflection in response to pitch commands</p>
+                    <figure>
+                        <br /> <center><img src="img/airship/Atail-pitch.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>A-Tail Pitch Response</center><br /></figcaption>
+                    </figure>
+
+                    <p>This full yaw control with thrust vectoring</p>
+                    <figure>
+                        <br /> <center><img src="img/airship/full-yaw.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
+                        <figcaption><center>A-Tail and Thrust Vectoring Yaw Response</center><br /></figcaption>
+                    </figure>
+                    
+                    <br />
+                    <!-- /Vehicle Testing and Results  -->
+
+                    <!-- Payload Component Testing -->
+                    <h4>Payload Component Testing </h4>
+
+                    <p>Most components were ready for testing near the end of the project lifecycle. The team had to scrap most testing plans and get creative as there was little time left.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/cv.gif" alt="" class="img-responsive"  width="75%" height="75%"/></center>
+                        <figcaption><center>Obstacle Detection CV Test. Subsystem developed by <a href="https://www.linkedin.com/in/atharva-ranadive-16bb86195?original_referer=https%3A%2F%2Fwww.google.com%2F" target="_blank">Atharva Ranadive.</a> </center><br /></figcaption>
+                    </figure>
+                    
+                    <p>TThe obstacle detection algorithm was tested on trees and birds as these objects would make up most of the obstacles the vehicle may run into. Images of the obstacles were printed and moved across the camera’s view. The gif shows the CV algorithms detecting the obstacles. The detection library outputs the location of the obstacles to build a MAVLink message that is sent to the flight controller. The controller then flies the vehicle to avoid the obstacles.</p>
+
+                    <p>Next, the gifs below are from testing the winch control and show how the sampling protocol works. The winch is lowered when the vehicle arrives at a sampling location. This subsystem was developed by <a href="https://www.linkedin.com/in/daniellelaganiere?trk=public_profile_browsemap" target="_blank">Danielle Laganiere.</a></p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/touching-water.gif" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Winch Controller Lowering Payload - Sensing Water</center><br /></figcaption>
+                    </figure>
+
+                    <p>If the capacitive water sensor is sensing water and there is some slack in the winch line, then the vehicle is at a valid sampling location.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/slack-no-water.gif" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Winch Controller Lowering Payload - Sensing Slack in Tension and No Water</center><br /></figcaption>
+                    </figure>
+
+                    <p>If the strain sensor senses slack in the line and no water present, then it must be at an invalid location and retracts the sensor.</p>
+
+                    <figure>
+                        <br /> <center><img src="img/airship/branch.gif" alt="" class="img-responsive"  width="50%" height="50%"/></center>
+                        <figcaption><center>Winch Controller Lowering Payload - Stuck While Retracting</center><br /></figcaption>
+                    </figure>
+
+                    <p>Lastly, the system checks for tension while retracting the water sensor. If tension is sensed, there could be a branch in the way. So the controller lowers and pulls the sonde multiple times until it is free. If this takes too long, an error message is sent to the ground station. In this case, the sensor was able to swing itself free.</p>
+
+                    <br />
+                    <!-- /Payload Component Testing -->
+
+                    <!-- /System Tests Results -->
+
+
                     <!-- The Payload Delivery Vehicle -->
-                    <h5>The Payload Delivery Vehicle</h5>
+                    <h5>Payload Delivery Vehicle Implementation</h5>
+
                     <!-- Vehicle Mechanical Design -->
                     <h4>Vehicle Mechanical Design</h4>
                     <figure>
@@ -238,46 +319,7 @@
                     <br />
                     <!-- /Mission Planning  -->
 
-                    <!-- Vehicle Testing and Results  -->
-                    <h4>Vehicle Testing and Results </h4>
-                    <p>The vehicle’s first integrated testing was done by suspending the airframe from the ceiling and ensuring that the motors are operating correctly.</p>
-
-                    <figure>
-                        <br /> <center><img src="img/airship/testing-setup.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Suspended Vehicle without Envelope</center><br /></figcaption>
-                    </figure>
-
-                    <p>The vehicle was then configured to receive input commands from a remote control module as described below.</p>
-
-                    <figure>
-                        <br /> <center><img src="img/airship/rc-setup.png" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Testing Setup with Remote Controller Unit</center><br /></figcaption>
-                    </figure>
-
-                    <p>This is the A-tail control surface deflection in response to yaw commands</p>
-                    <figure>
-                        <br /> <center><img src="img/airship/Atail-yaw.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
-                        <figcaption><center>A-Tail Yaw Response</center><br /></figcaption>
-                    </figure>
-
-                    <p>This is the A-tail control surface deflection in response to pitch commands</p>
-                    <figure>
-                        <br /> <center><img src="img/airship/Atail-pitch.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
-                        <figcaption><center>A-Tail Pitch Response</center><br /></figcaption>
-                    </figure>
-
-                    <p>This full yaw control with thrust vectoring</p>
-                    <figure>
-                        <br /> <center><img src="img/airship/full-yaw.gif" alt="" class="img-responsive"  width="100%" height="100%"/></center>
-                        <figcaption><center>A-Tail and Thrust Vectoring Yaw Response</center><br /></figcaption>
-                    </figure>
                     
-
-
-                    <br />
-                    <!-- /Vehicle Testing and Results  -->
-
-
                     <!-- Vehicle Status and Next Steps -->
                     <h4>Vehicle Status and Next Steps  </h4>
                     <p>As of June 2022, the vehicle can correctly respond to input commands from a remote-control module. Since these commands are the same as what would be sent in autonomous modes, the next steps are to rigorously tune each individual control loop in the software until reaching the desired stable outcome. </p>
@@ -288,11 +330,8 @@
 
                     <!-- /The Payload Delivery Vehicle -->
 
-
-                    <!-- The Autonomous Water Sampling Payload  -->
-                    <h5>The Autonomous Water Sampling Payload </h5>
                     <!-- Water Sampling Payload System Design -->
-                    <h4>Water Sampling Payload System Design </h4>
+                    <h5>Water Sampling Payload System Design </h5>
                     <figure>
                         <br /> <center><img src="img/airship/payload-sys.png" alt="" class="img-responsive"  width="100%" height="100%"/></center>
                         <figcaption><center>Payload System Block Diagram</center><br /></figcaption>
@@ -306,49 +345,7 @@
                     </figure>
 
                     <br />
-                    <!-- /Water Sampling Payload System Design -->
-
-                    <!-- Payload Component Testing -->
-                    <h4>Payload Component Testing </h4>
-
-                    <p>Most components were ready for testing near the end of the project lifecycle. The team had to scrap most testing plans and get creative as there was little time left.</p>
-
-                    <figure>
-                        <br /> <center><img src="img/airship/cv.gif" alt="" class="img-responsive"  width="75%" height="75%"/></center>
-                        <figcaption><center>Obstacle Detection CV Test. Subsystem developed by <a href="https://www.linkedin.com/in/atharva-ranadive-16bb86195?original_referer=https%3A%2F%2Fwww.google.com%2F" target="_blank">Atharva Ranadive.</a> </center><br /></figcaption>
-                    </figure>
-                    
-                    <p>TThe obstacle detection algorithm was tested on trees and birds as these objects would make up most of the obstacles the vehicle may run into. Images of the obstacles were printed and moved across the camera’s view. The gif shows the CV algorithms detecting the obstacles. The detection library outputs the location of the obstacles to build a MAVLink message that is sent to the flight controller. The controller then flies the vehicle to avoid the obstacles.</p>
-
-                    <p>Next, the gifs below are from testing the winch control and show how the sampling protocol works. The winch is lowered when the vehicle arrives at a sampling location.</p>
-
-                    <figure>
-                        <br /> <center><img src="img/airship/touching-water.gif" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Winch Controller Lowering Payload - Sensing Water</center><br /></figcaption>
-                    </figure>
-
-                    <p>If the capacitive water sensor is sensing water and there is some slack in the winch line, then the vehicle is at a valid sampling location.</p>
-
-                    <figure>
-                        <br /> <center><img src="img/airship/slack-no-water.gif" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Winch Controller Lowering Payload - Sensing Slack in Tension and No Water</center><br /></figcaption>
-                    </figure>
-
-                    <p>If the strain sensor senses slack in the line and no water present, then it must be at an invalid location and retracts the sensor.</p>
-
-                    <figure>
-                        <br /> <center><img src="img/airship/branch.gif" alt="" class="img-responsive"  width="50%" height="50%"/></center>
-                        <figcaption><center>Winch Controller Lowering Payload - Stuck While Retracting</center><br /></figcaption>
-                    </figure>
-
-                    <p>Lastly, the system checks for tension while retracting the water sensor. If tension is sensed, there could be a branch in the way. So the controller lowers and pulls the sonde multiple times until it is free. If this takes too long, an error message is sent to the ground station. In this case, the sensor was able to swing itself free.</p>
-
-                    <p>This subsystem was developed by <a href="https://www.linkedin.com/in/daniellelaganiere?trk=public_profile_browsemap" target="_blank">Danielle Laganiere.</a></p>
-
-                    <br />
-                    <!-- /Payload Component Testing -->
-
-                    <!-- /The Autonomous Water Sampling Payload -->
+                    <!-- /Water Sampling Payload System Design -->                    
 
                     <!-- Project Status and Next Steps -->
                     <h5>Project Status and Next Steps</h5>
