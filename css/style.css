@@ -42,6 +42,13 @@ h1 {
     line-height: 70px;
 }
 
+h1w {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    line-height: 70px;
+    color:rgb(242, 45, 45)
+}
+
 h4 {
     font-family: 'Lato', sans-serif;
     text-transform: capitalize;
@@ -318,8 +325,9 @@ a.active {
 ==================================================*/
 
 #home {
-    background: url(../img/home-bg-2.jpg);
+    /* background: url(../img/home-bg-2.jpg); */
     /* background: url(../img/home-pcb.jpg); */
+    background: url(../img/home-fog.jpg);
     background-size: cover;
     height: 100vh;
 }
@@ -829,6 +837,26 @@ fieldset {
         margin: 10px 0;
     }
 }
+
+@media (max-width: 500px) {
+    h1w {
+        font-family: 'Playfair Display', serif;
+        font-size: 50px;
+        line-height: 50px;
+    }
+    #home,
+    .disply-table {
+        height: 600px;
+    }
+    .about-border {
+        width: 265px;
+    }
+    .portfolio .categories-grid .categories ul li {
+        list-style: none;
+        margin: 10px 0;
+    }
+}
+
 
 @media (max-width: 420px) {
     nav li {
