@@ -326,7 +326,6 @@ a.active {
 
 #home {
     /* background: url(../img/home-bg-2.jpg); */
-    /* background: url(../img/home-pcb.jpg); */
     background: url(../img/home-fog.jpg);
     background-size: cover;
     height: 100vh;
